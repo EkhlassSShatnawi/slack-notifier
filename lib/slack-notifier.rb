@@ -33,8 +33,9 @@ module Slack
       else
         options[:text] = message
       end
-
+      OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
       post options
+      OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_PEER
     end
 
     def post payload={}
